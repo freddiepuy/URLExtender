@@ -15,7 +15,7 @@ function expand_url($url){
             // t.co gives Location as an array
             return expand_url($location[count($location) - 1]);
         } else {
-            return expand_url($location);
+            return expand_url($location)
         }
     }
     return "<h1>Expanded URL: <h4>{$url}</h4></h1>";
