@@ -6,7 +6,7 @@
  * @return <string> - Longer version of the short url
  */
 
-extract($_POST);
+extract($_POST); //Extracting the data being passed from the JSON
 
 function expand_url($url)
 {
@@ -25,33 +25,36 @@ function expand_url($url)
     return $url;
 }
 
-/**
- * Test Short urls
- */
+// For readability
 function test_expand_url($short_url)
 {
     return $actual_long_url = expand_url($short_url);
 }
 
+
 if (isset($_POST['url'])) {
     $expanded = test_expand_url($url);
     $status = true;
+
+    // Checking if the url is expanded
     if ($expanded == $url) {
         $status = false;
     } else {
         $status = true;
     }
+
+    // Initialize the JSON array of the data to be returned
     $data = array(
         'url' => $expanded,
         'status' => $status
     );
 
+    // Returning the encoded data
     echo json_encode($data);
 } else {
     $response['status'] = 200;
     $response['message'] = "Invalid or data not found";
 }
 
-// Run testcases 
 
 ?>
