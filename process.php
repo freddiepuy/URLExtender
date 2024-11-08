@@ -31,40 +31,39 @@ function test_expand_url($short_url)
     return $actual_long_url = expand_url($short_url);
 } */
 
-// function expand_url($url)
-// {
-//     $ch = curl_init();
+function expand_url($url)
+{
+    $ch = curl_init();
 
-//     // Set the initial shortened URL
-//     curl_setopt($ch, CURLOPT_URL, $url);
+    // Set the initial shortened URL
+    curl_setopt($ch, CURLOPT_URL, $url);
 
-//     // Set User-Agent to simulate a real browser
-//     curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36");
-
-
-//     // Follow any "Location" headers that cause redirects
-//     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-
-//     // Don't output the content, just get the final URL
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // Set User-Agent to simulate a real browser
+    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36");
 
 
-//     // Execute the request
-//     curl_exec($ch);
+    // Follow any "Location" headers that cause redirects
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
-//     // Get the final effective URL after following redirects
-//     $expanded_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+    // Don't output the content, just get the final URL
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-//     // Close the cURL session
-//     curl_close($ch);
 
-//     return $expanded_url;
-// }
+    // Execute the request
+    curl_exec($ch);
+
+    // Get the final effective URL after following redirects
+    $expanded_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+
+    // Close the cURL session
+    curl_close($ch);
+
+    return $expanded_url;
+}
 
 
 if (isset($_POST['url'])) {
-    // $expanded = expand_url($url); 
-    $expanded = $url;
+    $expanded = expand_url($url); 
     $status = true;
     $testExpand = '';
     $testUrl = '';
