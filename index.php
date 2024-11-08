@@ -85,11 +85,13 @@
                 if (urlStatus) {
                     // If the status of expanding the url is true
                     document.getElementById('status').innerHTML = "<b>Success</b>";
+                    document.getElementById('status').classList.remove('text-danger');
                     document.getElementById('status').classList.add('text-success');
                 } else {
                     // If the status of expanding the url is false
                     document.getElementById('status').innerHTML = "<b>URL cannot be extended</b>"
-                    document.getElementById('status').classList.add('text-danger')
+                    document.getElementById('status').classList.remove('text-success');
+                    document.getElementById('status').classList.add('text-danger');
                 }
 
             }, error: function (XMLHttpRequest, textStatus, errorThrown) {
