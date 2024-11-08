@@ -8,7 +8,7 @@
 
 extract($_POST); //Extracting the data being passed from the JSON
 
-function expand_url($url)
+/* function expand_url($url)
 {
     //Get response headers
     $response = get_headers($url, 1);
@@ -29,7 +29,7 @@ function expand_url($url)
 function test_expand_url($short_url)
 {
     return $actual_long_url = expand_url($short_url);
-}
+} */
 
 // function expand_url($url)
 // {
@@ -63,7 +63,8 @@ function test_expand_url($short_url)
 
 
 if (isset($_POST['url'])) {
-    $expanded = expand_url($url); 
+    // $expanded = expand_url($url); 
+    $expanded = $url;
     $status = true;
     $testExpand = '';
     $testUrl = '';
